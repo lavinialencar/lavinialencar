@@ -2,7 +2,9 @@
 
 Analytics engineer. Dado de ponta a ponta: modelagem, ETL, produto analítico. Passei por iFood e Nuvemshop. Formada em Marketing e Ciência da Computação.
 
-Curto entender o porquê por trás dos números, não só o resultado.
+SQL · Python · Databricks
+
+Curto entender o porquê por trás dos números, não só o resultado. Prefiro ferramenta enxuta e organizada a stack genérica.
 
 ## Agora
 
