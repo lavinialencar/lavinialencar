@@ -1,8 +1,6 @@
 # Lavínia Alencar
 
-Analytics engineer. Dado de ponta a ponta: modelagem, ETL, produto analítico. Passei por iFood e Nuvemshop. Formada em Marketing e Ciência da Computação.
-
-Curto entender o porquê por trás dos números, não só o resultado.
+Analytics engineer. Dado de ponta a ponta: modelagem, ETL, produto analítico. Passei por iFood e Nuvemshop. Também toco projetos de tecnólogia, design e social.
 
 ## Agora
 
