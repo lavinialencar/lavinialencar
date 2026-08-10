@@ -1,10 +1,8 @@
 # Lavínia Alencar
 
-Analytics engineer. Dado de ponta a ponta: modelagem, ETL, produto analítico. Passei por iFood e Nuvemshop. Formada em Marketing e Ciência da Computação.
+Analytics engineer. Dado de ponta a ponta: modelagem, ETL, produto analítico. Passei por iFood e Nuvemshop. Também toco projetos de tecnologia, design e social.
 
 SQL · Python · Databricks
-
-Curto entender o porquê por trás dos números, não só o resultado. Prefiro ferramenta enxuta e organizada a stack genérica.
 
 ## Agora
 
