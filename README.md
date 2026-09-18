@@ -6,6 +6,6 @@ SQL · Python · Databricks
 
 ## Agora
 
-Construindo o [Meridian](https://github.com/lavinialencar/meridian), sistema de produtividade pessoal num arquivo HTML só. Local-first, zero build.
+Meu hub está no ar em [lavinialencar.com.br](https://lavinialencar.com.br), com o [portfólio de dados](https://lavinialencar.com.br/freela): raio-X de dados, automação sob medida e parceria contínua.
 
-[Demo](https://lavinialencar.github.io/meridian/)
+Do outro lado da mesa: [Tekko Studio](https://tekkostudio.com), estúdio de design, eletrônica e impressão 3D, e o canal [Lavs](https://www.youtube.com/@lavs.creater) no YouTube.
