@@ -1,6 +1,6 @@
 # Lavínia Alencar
 
-Analytics engineer. Dado de ponta a ponta: modelagem, ETL, produto analítico. Passei por iFood e Nuvemshop. Também toco projetos de tecnologia, design e social.
+Analytics engineer. Data end to end: modeling, ETL, analytics products. Previously at iFood and Nuvemshop. I also work on technology, design and social projects.
 
 
-[Me conheça melhor](https://lavinialencar.com.br) · [Portfólio de dados](https://lavinialencar.com.br/freela)
+[Get to know me better](https://lavinialencar.com.br) · [Data portfolio](https://lavinialencar.com.br/freela)
