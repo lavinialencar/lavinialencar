@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/header.svg" width="100%" alt="Lavínia Alencar: Analytics engineer, Technology, Design, Creation, Coffee, Code, electronics, 3D printing" />
+  <img src="assets/header.svg" width="100%" alt="Lavínia Alencar. Technology, design, creation, coffee. Analytics engineer; code, electronics, 3D printing." />
 </p>
 
 <p align="center">

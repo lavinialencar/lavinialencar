@@ -28,7 +28,7 @@ def write(name, svg):
 
 
 # ---------------------------------------------------------------- cabeçalho
-PHRASES = ["Analytics engineer", "Technology · Design · Creation · Coffee", "Code, electronics, 3D printing"]
+PHRASES = ["Analytics engineer", "Code, electronics, 3D printing"]
 
 
 def header():
@@ -81,7 +81,7 @@ def header():
 <rect width="{W}" height="{H}" fill="{BG}"/>
 {network(H, x_from=440, n=44, seed=7)}
 <rect width="{W}" height="{H}" filter="url(#grain)" opacity=".5"/>
-<text x="{x0 - 2}" y="36" class="cap">BELÉM, PA  ·  1°27′S 48°30′W</text>
+<text x="{x0 - 2}" y="36" class="cap">TECHNOLOGY  ·  DESIGN  ·  CREATION  ·  COFFEE</text>
 <text x="{x0 - 4}" y="88" class="nm">Lavínia Alencar</text>
 <text x="{x0 - 26}" y="{y0}" class="pr">›</text>
 <g>{''.join(texts)}
