@@ -33,7 +33,7 @@ PHRASES = ["Analytics engineer", "Technology · Design · Creation · Coffee", "
 
 def header():
     fs, cw = 24, 24 * 0.6  # monoespaçada: largura do caractere ~0.6 do corpo
-    x0, y0 = 72, 132
+    x0, y0 = 72, 134
     slot, cycle = 4.0, 4.0 * len(PHRASES)
     type_t, hold_t, del_t = 1.3, 2.9, 3.4
 
@@ -67,7 +67,7 @@ def header():
     css.append(f".cur{{animation:cur {cycle}s linear infinite;animation-delay:-{type_t}s}}")
     css.append("@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}.cur rect{animation:blink 1s step-end infinite}")
 
-    H = 240
+    H = 176
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Lavínia Alencar: {', '.join(PHRASES)}">
 <defs>{GRAIN_DEFS}</defs>
 <style>
@@ -79,12 +79,12 @@ def header():
 {NET_CSS}
 </style>
 <rect width="{W}" height="{H}" fill="{BG}"/>
-{network(H, x_from=440, n=58, seed=7)}
+{network(H, x_from=440, n=44, seed=7)}
 <rect width="{W}" height="{H}" filter="url(#grain)" opacity=".5"/>
-<text x="{x0 - 2}" y="44" class="cap">BELÉM, PA  ·  1°27′S 48°30′W</text>
-<text x="{x0 - 4}" y="104" class="nm">Lavínia Alencar</text>
-<text x="{x0 - 26}" y="{y0 + 20}" class="pr">›</text>
-<g transform="translate(0,20)">{''.join(texts)}
+<text x="{x0 - 2}" y="36" class="cap">BELÉM, PA  ·  1°27′S 48°30′W</text>
+<text x="{x0 - 4}" y="88" class="nm">Lavínia Alencar</text>
+<text x="{x0 - 26}" y="{y0}" class="pr">›</text>
+<g>{''.join(texts)}
 <g class="cur"><rect x="{x0 + 2}" y="{y0 - fs + 2}" width="3" height="{fs + 2}" fill="{ACCENT}"/></g></g>
 </svg>"""
     write("header.svg", svg)
@@ -163,14 +163,14 @@ def network(h, x_from, n, seed, k=3, min_d=34):
 
 
 def footer():
-    H = 110
-    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Built with SQL, Python and a 3D printer humming nearby">
+    H = 64
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Somewhere between a SQL query and a print in progress">
 <defs>{GRAIN_DEFS}</defs>
 <style>{NET_CSS}.q{{font:13px {MONO};fill:{MUTED}}}</style>
 <rect width="{W}" height="{H}" fill="{BG}"/>
-{network(H, x_from=500, n=22, seed=11, min_d=28)}
+{network(H, x_from=520, n=16, seed=11, min_d=24)}
 <rect width="{W}" height="{H}" filter="url(#grain)" opacity=".5"/>
-<text x="46" y="{H / 2 + 5}" class="q">built with SQL, Python and a 3D printer humming nearby</text>
+<text x="46" y="{H / 2 + 5}" class="q">somewhere between a SQL query and a print in progress</text>
 </svg>"""
     write("footer.svg", svg)
 
