@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="120" viewBox="0 0 840 120" role="img" aria-label="Thanks for stopping by">
+<defs><linearGradient id="sea" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#0A1F3B"/><stop offset="1" stop-color="#1D4677"/></linearGradient>
+<clipPath id="frame"><rect width="840" height="120" rx="14"/></clipPath></defs>
+<style>@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-840px)}}.w1{animation:slide 14s linear infinite}.w2{animation:slide 9s linear infinite reverse}.w3{animation:slide 20s linear infinite}.q{font:italic 15px -apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#E6EEF8}</style>
+<g clip-path="url(#frame)">
+<rect width="840" height="120" fill="url(#sea)"/>
+<g transform="translate(0,120) scale(1,-1)"><g class="w1"><path d="M-840,120 L-840,58 Q-735.0,46 -630,58 Q-525.0,70 -420,58 Q-315.0,46 -210,58 Q-105.0,70 0,58 Q105.0,46 210,58 Q315.0,70 420,58 Q525.0,46 630,58 Q735.0,70 840,58 Q945.0,46 1050,58 Q1155.0,70 1260,58 Q1365.0,46 1470,58 Q1575.0,70 1680,58 Q1785.0,46 1890,58 L1890,120Z" fill="#2F5A8C" opacity="0.55"/></g><g class="w2"><path d="M-840,120 L-840,70 Q-735.0,79 -630,70 Q-525.0,61 -420,70 Q-315.0,79 -210,70 Q-105.0,61 0,70 Q105.0,79 210,70 Q315.0,61 420,70 Q525.0,79 630,70 Q735.0,61 840,70 Q945.0,79 1050,70 Q1155.0,61 1260,70 Q1365.0,79 1470,70 Q1575.0,61 1680,70 Q1785.0,79 1890,70 L1890,120Z" fill="#5E88BC" opacity="0.35"/></g><g class="w3"><path d="M-840,120 L-840,82 Q-735.0,76 -630,82 Q-525.0,88 -420,82 Q-315.0,76 -210,82 Q-105.0,88 0,82 Q105.0,76 210,82 Q315.0,88 420,82 Q525.0,76 630,82 Q735.0,88 840,82 Q945.0,76 1050,82 Q1155.0,88 1260,82 Q1365.0,76 1470,82 Q1575.0,88 1680,82 Q1785.0,76 1890,82 L1890,120Z" fill="#C4D7EE" opacity="0.18"/></g></g>
+</g>
+<text x="420.0" y="94" text-anchor="middle" class="q">Built with SQL, Python and a 3D printer humming nearby.</text>
+</svg>
