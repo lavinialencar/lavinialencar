@@ -190,7 +190,7 @@ WHOAMI = ("lavinia@github", [
 SETUP = ("~/setup", [
     ("OS", "macOS, Linux (Windows for games)"),
     ("Laptop", "MacBook Air M4"),
-    ("Desktop", "Ryzen 5 5600GT, RTX 5060"),
+    ("Desktop", "Ryzen 5 5600GT, RTX 5060, 32 GB"),
     ("NAS", "ZimaOS home server, on 24/7"),
     ("Runs", "Docker, self-hosted apps"),
     ("Lab", "mini PC test box, on 24/7"),
