@@ -73,72 +73,95 @@ def header():
     css.append(f".cur{{animation:cur {cycle}s linear infinite;animation-delay:-{type_t}s}}")
     css.append("@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}.cur rect{animation:blink 1s step-end infinite}")
 
-    H = 230
+    H = 240
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Lavínia Alencar: {', '.join(PHRASES)}">
-<defs>
-<linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A1F3B"/><stop offset=".6" stop-color="#0F2E57"/><stop offset="1" stop-color="#1D4677"/></linearGradient>
-<clipPath id="frame"><rect width="{W}" height="{H}" rx="14"/></clipPath>
-</defs>
+<defs>{GRAIN_DEFS}</defs>
 <style>
-.nm{{font:700 46px {SANS};fill:{INK};letter-spacing:-.5px}}
+.cap{{font:600 11px {MONO};fill:{MUTED};letter-spacing:2px}}
+.nm{{font:800 54px {SANS};fill:{INK};letter-spacing:-1.5px}}
 .pr{{font:500 {fs}px {MONO};fill:{MUTED}}}
 .ty{{font:500 {fs}px {MONO};fill:{ACCENT}}}
 {''.join(css)}
-{WAVE_CSS}
+{RIDGE_CSS}
 </style>
-<g clip-path="url(#frame)">
-<rect width="{W}" height="{H}" fill="url(#sky)"/>
-{waves(H, 168)}
-</g>
-<text x="{x0 - 2}" y="84" class="nm">Lavínia Alencar</text>
-<text x="{x0 - 26}" y="{y0}" class="pr">›</text>
-{''.join(texts)}
-<g class="cur"><rect x="{x0 + 2}" y="{y0 - fs + 2}" width="3" height="{fs + 2}" fill="{ACCENT}"/></g>
+<rect width="{W}" height="{H}" fill="{BG}"/>
+{ridges(H, x_from=430, rows=16, y_top=58, gap=10, seed=7, peak=(4, 700, 70))}
+<rect width="{W}" height="{H}" filter="url(#grain)" opacity=".5"/>
+<text x="{x0 - 2}" y="44" class="cap">BELÉM, PA  ·  1°27′S 48°30′W</text>
+<text x="{x0 - 4}" y="104" class="nm">Lavínia Alencar</text>
+<text x="{x0 - 26}" y="{y0 + 20}" class="pr">›</text>
+<g transform="translate(0,20)">{''.join(texts)}
+<g class="cur"><rect x="{x0 + 2}" y="{y0 - fs + 2}" width="3" height="{fs + 2}" fill="{ACCENT}"/></g></g>
 </svg>"""
     write("header.svg", svg)
 
 
-# ---------------------------------------------------------------- ondas
-WAVE_CSS = (
-    "@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-840px)}}"
-    ".w1{animation:slide 14s linear infinite}.w2{animation:slide 9s linear infinite reverse}"
-    ".w3{animation:slide 20s linear infinite}"
+# ---------------------------------------------------------------- ridgelines
+# Linhas empilhadas: ao mesmo tempo gráfico de dados, camada de impressão 3D
+# e curva de nível de rio. Um trecho claro corre na linha da frente, como o bico.
+GRAIN_DEFS = (
+    '<filter id="grain" x="0" y="0" width="100%" height="100%">'
+    '<feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/>'
+    '<feColorMatrix values="0 0 0 0 .77  0 0 0 0 .84  0 0 0 0 .93  0 0 0 .09 0"/></filter>'
+    '<linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
+    '<stop offset=".35" stop-color="#fff"/><stop offset="1" stop-color="#fff"/></linearGradient>'
+)
+RIDGE_CSS = (
+    "@keyframes head{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}"
+    ".head{animation:head 7s linear infinite;animation-delay:-2.5s}"
 )
 
 
-def wave_path(base, amp, phase, h):
-    # duas voltas de 840px, pra deslizar sem emenda
-    pts = [f"M{-840},{h}", f"L{-840},{base}"]
-    step = 210
-    for k in range(-4, 9):
-        x = k * step
-        y = base + (amp if (k + phase) % 2 else -amp)
-        pts.append(f"Q{x + step / 2},{y} {x + step},{base}")
-    pts.append(f"L{8 * step + 210},{h}Z")
-    return " ".join(pts)
+def _mix(c1, c2, t):
+    a = [int(c1[i:i + 2], 16) for i in (1, 3, 5)]
+    b = [int(c2[i:i + 2], 16) for i in (1, 3, 5)]
+    return "#" + "".join(f"{round(x + (y - x) * t):02X}" for x, y in zip(a, b))
 
 
-def waves(h, base, flip=False):
-    layers = [(BLUES[1], 12, 0, "w1", 0.55), (BLUES[2], 9, 1, "w2", 0.35), (BLUES[4], 6, 0, "w3", 0.18)]
+def ridges(h, x_from, rows, y_top, gap, seed, peak=None, amp=34, x_to=None):
+    import math
+    import random
+
+    rnd = random.Random(seed)
+    x_to = x_to or W + 20
+    span = x_to - x_from
+    xs = [x_from + span * k / 120 for k in range(121)]
+    mid = x_from + span * 0.55
     out = []
-    for i, (c, amp, ph, cls, op) in enumerate(layers):
-        b = base + i * 12
-        out.append(f'<g class="{cls}"><path d="{wave_path(b, amp, ph, h)}" fill="{c}" opacity="{op}"/></g>')
-    g = "".join(out)
-    return f'<g transform="translate(0,{h}) scale(1,-1)">{g}</g>' if flip else g
+    front = ""
+    for i in range(rows):
+        base = y_top + i * gap
+        bumps = [(rnd.uniform(x_from + span * .2, x_to - span * .1), rnd.uniform(.3, 1) * amp, rnd.uniform(14, 40))
+                 for _ in range(rnd.randint(3, 6))]
+        if peak and peak[0] == i:
+            bumps.append((peak[1], peak[2], 34))
+        pts = []
+        for x in xs:
+            env = math.exp(-((x - mid) / (span * .42)) ** 2)
+            y = sum(a * math.exp(-((x - c) / w) ** 2) for c, a, w in bumps) * env
+            y += rnd.uniform(0, 1.6) * env
+            pts.append((x, base - y))
+        line = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in pts)
+        t = i / (rows - 1)
+        stroke = _mix("#2F5A8C", "#C4D7EE", t ** 1.4)
+        out.append(
+            f'<path d="{line} L{x_to},{h + 2} L{x_from},{h + 2}Z" fill="{BG}"/>'
+            f'<path d="{line}" fill="none" stroke="{stroke}" stroke-width="{1 + t * .6:.2f}"/>'
+        )
+        front = line
+    head = f'<path class="head" d="{front}" pathLength="1000" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="36 964"/>'
+    return f'<mask id="m{seed}"><rect x="{x_from}" width="{span}" height="{h}" fill="url(#fade)"/></mask><g mask="url(#m{seed})">{"".join(out)}{head}</g>'
 
 
 def footer():
-    H = 120
-    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Thanks for stopping by">
-<defs><linearGradient id="sea" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#0A1F3B"/><stop offset="1" stop-color="#1D4677"/></linearGradient>
-<clipPath id="frame"><rect width="{W}" height="{H}" rx="14"/></clipPath></defs>
-<style>{WAVE_CSS}.q{{font:italic 15px {SANS};fill:{INK}}}</style>
-<g clip-path="url(#frame)">
-<rect width="{W}" height="{H}" fill="url(#sea)"/>
-{waves(H, 58, flip=True)}
-</g>
-<text x="{W / 2}" y="{H - 26}" text-anchor="middle" class="q">Built with SQL, Python and a 3D printer humming nearby.</text>
+    H = 110
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Built with SQL, Python and a 3D printer humming nearby">
+<defs>{GRAIN_DEFS}</defs>
+<style>{RIDGE_CSS}.q{{font:13px {MONO};fill:{MUTED}}}</style>
+<rect width="{W}" height="{H}" fill="{BG}"/>
+{ridges(H, x_from=480, rows=7, y_top=50, gap=9, seed=11, amp=22)}
+<rect width="{W}" height="{H}" filter="url(#grain)" opacity=".5"/>
+<text x="46" y="{H / 2 + 5}" class="q">built with SQL, Python and a 3D printer humming nearby</text>
 </svg>"""
     write("footer.svg", svg)
 
