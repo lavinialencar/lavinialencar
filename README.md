@@ -72,11 +72,9 @@ The landing page of Cafuaçu, a newsletter about specialty coffee in Brazil. Sta
 
 </details>
 
-### Current focus
+### Right now
 
 ```yaml
-focus:     3d-print-workflow, the AI conductor skill for my Bambu Lab P2S
-           smart-coffee-scale, a pour-over scale that guides every pour
 learning:  firmware on ESP32, agent design
 open_to:   remote data projects, lavinialencar.com.br
 ```
