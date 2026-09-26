@@ -242,7 +242,44 @@ text{{font:13.5px {MONO};fill:{INK}}}
     write("card.svg", svg)
 
 
+# ---------------------------------------------------------------- botões
+# Botões de link do README, no lugar dos selos do shields.io: mesma paleta, ícone desenhado e seta.
+ICONES = {
+    # casa: o hub pessoal
+    "home": '<path d="M3 9.5 10 4l7 5.5V17a1 1 0 0 1-1 1h-3.5v-5h-5v5H4a1 1 0 0 1-1-1z" fill="none" stroke="{c}" stroke-width="1.6" stroke-linejoin="round"/>',
+    # barras: o portfólio de dados
+    "dados": '<rect x="3.5" y="11" width="3" height="6" rx=".6" fill="{c}"/><rect x="8.5" y="7" width="3" height="10" rx=".6" fill="{c}"/><rect x="13.5" y="3.5" width="3" height="13.5" rx=".6" fill="{c}"/>',
+    # quadrado com "in"
+    "linkedin": '<rect x="2.5" y="2.5" width="15" height="15" rx="2.5" fill="none" stroke="{c}" stroke-width="1.6"/><rect x="6" y="9" width="1.9" height="5.5" fill="{c}"/><circle cx="6.95" cy="6.6" r="1.1" fill="{c}"/><path d="M10 14.5V9h1.8v.9c.4-.6 1.1-1.1 2.1-1.1 1.4 0 2.1.9 2.1 2.5v3.2h-1.9v-2.9c0-.8-.3-1.2-.9-1.2-.7 0-1.2.5-1.2 1.4v2.7z" fill="{c}"/>',
+}
+BOTOES = [
+    ("btn-site.svg", "Get to know me", "home", True),
+    ("btn-portfolio.svg", "Data portfolio", "dados", False),
+    ("btn-linkedin.svg", "LinkedIn", "linkedin", False),
+]
+
+
+def botoes():
+    h, fs = 40, 14
+    for nome, rotulo, icone, principal in BOTOES:
+        w = round(16 + 20 + 10 + len(rotulo) * fs * 0.54 + 8 + 10 + 16)
+        fundo = "#2B41B8" if principal else BG
+        borda = "#2B41B8" if principal else EDGE
+        tinta = "#FFFFFF" if principal else INK
+        cor_ic = "#CBD3F6" if principal else ACCENT
+        tx = 16 + 20 + 10
+        seta_x = w - 16 - 10
+        svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="{html.escape(rotulo)}">
+<rect x=".5" y=".5" width="{w - 1}" height="{h - 1}" rx="6" fill="{fundo}" stroke="{borda}"/>
+<g transform="translate(16,10)">{ICONES[icone].format(c=cor_ic)}</g>
+<text x="{tx}" y="{h / 2 + 5}" font-family="{SANS}" font-size="{fs}" font-weight="600" fill="{tinta}">{html.escape(rotulo)}</text>
+<path d="M{seta_x} {h / 2 + 4} l8 -8 M{seta_x + 2} {h / 2 - 4} h6 v6" fill="none" stroke="{cor_ic}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>"""
+        write(nome, svg)
+
+
 if __name__ == "__main__":
     header()
     card()
     footer()
+    botoes()

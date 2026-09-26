@@ -8,9 +8,9 @@
 </p>
 
 <p align="center">
-  <a href="https://lavinialencar.com.br/en/"><img src="https://img.shields.io/badge/Get_to_know_me-2B41B8?style=for-the-badge" alt="Get to know me" /></a>
-  <a href="https://lavinialencar.com.br/en/freela/"><img src="https://img.shields.io/badge/Data_portfolio-1A1C21?style=for-the-badge" alt="Data portfolio" /></a>
-  <a href="https://www.linkedin.com/in/lavinialencar/"><img src="https://img.shields.io/badge/LinkedIn-1A1C21?style=for-the-badge&logo=linkedin&logoColor=8497EE" alt="LinkedIn" /></a>
+  <a href="https://lavinialencar.com.br/en/"><img src="assets/btn-site.svg" height="40" alt="Get to know me" /></a>
+  <a href="https://lavinialencar.com.br/en/freela/"><img src="assets/btn-portfolio.svg" height="40" alt="Data portfolio" /></a>
+  <a href="https://www.linkedin.com/in/lavinialencar/"><img src="assets/btn-linkedin.svg" height="40" alt="LinkedIn" /></a>
 </p>
 
 <br/>
