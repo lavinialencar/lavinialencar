@@ -186,6 +186,7 @@ WHOAMI = ("lavinia@github", [
     ("Make", "Fusion, OrcaSlicer, electronics"),
     ("AI", "Claude Code, my own skills"),
     ("Site", "lavinialencar.com.br"),
+    ("LinkedIn", "in/lavinialencar"),
 ])
 SETUP = ("~/setup", [
     ("OS", "macOS, Linux (Windows for games)"),

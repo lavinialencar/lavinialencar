@@ -10,6 +10,7 @@
 <p align="center">
   <a href="https://lavinialencar.com.br/en/"><img src="https://img.shields.io/badge/Get_to_know_me-2B41B8?style=for-the-badge" alt="Get to know me" /></a>
   <a href="https://lavinialencar.com.br/en/freela/"><img src="https://img.shields.io/badge/Data_portfolio-1A1C21?style=for-the-badge" alt="Data portfolio" /></a>
+  <a href="https://www.linkedin.com/in/lavinialencar/"><img src="https://img.shields.io/badge/LinkedIn-1A1C21?style=for-the-badge&logo=linkedin&logoColor=8497EE" alt="LinkedIn" /></a>
 </p>
 
 <br/>
