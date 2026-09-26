@@ -32,7 +32,7 @@ PHRASES = ["Analytics engineer", "Code, electronics, 3D printing"]
 
 
 def header():
-    fs, cw = 20, 20 * 0.6  # monoespaçada: largura do caractere ~0.6 do corpo
+    fs, cw = 18, 18 * 0.6  # monoespaçada: largura do caractere ~0.6 do corpo
     x0, y0 = 72, 116
     slot, cycle = 4.0, 4.0 * len(PHRASES)
     type_t, hold_t, del_t = 1.3, 2.9, 3.4
@@ -81,7 +81,7 @@ def header():
 <rect width="{W}" height="{H}" fill="{BG}"/>
 {network(H, x_from=440, n=38, seed=7)}
 <rect width="{W}" height="{H}" filter="url(#grain)" opacity=".5"/>
-<text x="{x0 - 2}" y="30" class="cap">TECHNOLOGY  ·  DESIGN  ·  CREATION  ·  COFFEE</text>
+<text x="{x0 - 2}" y="25" class="cap">TECHNOLOGY  ·  DESIGN  ·  CREATION  ·  COFFEE</text>
 <text x="{x0 - 4}" y="80" class="nm">Lavínia Alencar</text>
 <text x="{x0 - 26}" y="{y0}" class="pr">›</text>
 <g>{''.join(texts)}
