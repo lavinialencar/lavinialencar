@@ -3,9 +3,8 @@
 </p>
 
 <p align="center">
-  Analytics engineer and maker from Belém, in the Brazilian Amazon.<br/><br/>
-  I build data products end to end (modeling, ETL, analytics products), previously at iFood and Nuvemshop.<br/>
-  Outside data, I mix code, electronics, 3D printing and design to make things that are easy to use and good to look at.
+  Analytics engineer and maker. I build data products end to end: modeling, ETL, analytics products.<br/>
+  Outside data, I create things with code, electronics, 3D printing and design.
 </p>
 
 <p align="center">
@@ -16,7 +15,7 @@
 <br/>
 
 <p align="center">
-  <img src="assets/card.svg" width="100%" alt="whoami: analytics engineer and maker from Belém; data with SQL, Spark, Databricks, Airflow. Setup: macOS and Linux, MacBook Air M4, Ryzen desktop, ZimaOS home server with Docker, Bambu Lab P2S." />
+  <img src="assets/card.svg" width="100%" alt="whoami: analytics engineer and maker from Belém; data with SQL, Python, Databricks, Airflow. Setup: macOS and Linux, MacBook Air M4, Ryzen desktop, ZimaOS home server with Docker, Bambu Lab P2S." />
 </p>
 
 ### Stack
@@ -98,12 +97,6 @@ The landing page of Cafuaçu, a newsletter about specialty coffee in Brazil. Sta
 | **Repo** | [lavinialencar/cafuacu-landing](https://github.com/lavinialencar/cafuacu-landing) |
 
 </details>
-
-### Activity
-
-<p align="center">
-  <img src="assets/contrib.svg" width="100%" alt="Contribution activity over the last year" />
-</p>
 
 ### Current focus
 

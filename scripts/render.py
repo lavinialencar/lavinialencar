@@ -1,17 +1,11 @@
-"""Gera os SVGs animados do perfil: cabeçalho, cartão e mapa de contribuições.
+"""Gera os SVGs animados do perfil: cabeçalho, cartão e rodapé.
 
-Só biblioteca padrão. Roda local ou na Action diária:
-    python3 scripts/render.py            # tudo
-    python3 scripts/render.py --offline  # sem buscar contribuições
+Só biblioteca padrão. Depois de mudar um texto aqui:
+    python3 scripts/render.py
 """
-import datetime as dt
 import html
-import re
-import sys
-import urllib.request
 from pathlib import Path
 
-USER = "lavinialencar"
 OUT = Path(__file__).resolve().parent.parent / "assets"
 MONO = "'IBM Plex Mono','SFMono-Regular',Menlo,Consolas,monospace"
 SANS = "Archivo,'Helvetica Neue',Arial,sans-serif"
@@ -172,7 +166,7 @@ WHOAMI = ("lavinia@github", [
     ("Role", "analytics engineer, maker"),
     ("Based", "Belém, Brazilian Amazon"),
     ("Exp", "iFood, Nuvemshop"),
-    ("Data", "SQL, Spark, Databricks, Airflow"),
+    ("Data", "SQL, Python, Databricks, Airflow"),
     ("Web", "Astro, Cloudflare Workers"),
     ("Make", "Fusion, OrcaSlicer, electronics"),
     ("AI", "Claude Code, my own skills"),
@@ -234,88 +228,7 @@ text{{font:13.5px {MONO};fill:{INK}}}
     write("card.svg", svg)
 
 
-# ---------------------------------------------------------------- contribuições
-def fetch_contributions():
-    req = urllib.request.Request(
-        f"https://github.com/users/{USER}/contributions", headers={"User-Agent": "profile-art"}
-    )
-    page = urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
-    counts = {}
-    for m in re.finditer(r'<tool-tip[^>]*for="([^"]+)"[^>]*>([^<]*)</tool-tip>', page):
-        n = re.match(r"(\d[\d,]*) contribution", m.group(2))
-        counts[m.group(1)] = int(n.group(1).replace(",", "")) if n else 0
-    days = []
-    for m in re.finditer(r"<td[^>]*ContributionCalendar-day[^>]*>", page):
-        tag = m.group(0)
-        date = re.search(r'data-date="([^"]+)"', tag)
-        if not date:
-            continue
-        lvl = int(re.search(r'data-level="(\d)"', tag).group(1))
-        cid = re.search(r'id="([^"]+)"', tag).group(1)
-        days.append((dt.date.fromisoformat(date.group(1)), lvl, counts.get(cid, 0)))
-    days.sort()
-    total = re.search(r"([\d,]+)\s+contributions?\s+in the last year", page)
-    total = int(total.group(1).replace(",", "")) if total else sum(d[2] for d in days)
-    return days, total
-
-
-def contrib():
-    days, total = fetch_contributions()
-    cell, gap, left, top = 12, 3, 52, 64
-    first = days[0][0]
-    start = first - dt.timedelta(days=(first.weekday() + 1) % 7)  # semana começa no domingo
-    cells, months, seen = [], [], set()
-    for date, lvl, n in days:
-        col = (date - start).days // 7
-        row = (date.weekday() + 1) % 7
-        x = left + col * (cell + gap)
-        y = top + row * (cell + gap)
-        delay = (col + row) * 0.018
-        cells.append(
-            f'<rect class="d" style="animation-delay:{delay:.2f}s" x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="{BLUES[lvl]}">'
-            f"<title>{n} on {date.isoformat()}</title></rect>"
-        )
-        key = (date.year, date.month)
-        if date.day <= 7 and key not in seen and col < 52:
-            seen.add(key)
-            months.append(f'<text x="{x}" y="{top - 10}" class="mo">{date.strftime("%b")}</text>')
-    cols = (days[-1][0] - start).days // 7 + 1
-    width = max(W, left + cols * (cell + gap) + 36)
-    h = top + 7 * (cell + gap) + 44
-    wd = "".join(
-        f'<text x="{left - 10}" y="{top + r * (cell + gap) + 10}" class="mo" text-anchor="end">{t}</text>'
-        for r, t in ((1, "Mon"), (3, "Wed"), (5, "Fri"))
-    )
-    legend_x = width - 36 - 5 * (cell + gap) - 70
-    legend = (
-        f'<text x="{legend_x}" y="{h - 18}" class="mo">less</text>'
-        + "".join(
-            f'<rect x="{legend_x + 34 + k * (cell + gap)}" y="{h - 28}" width="{cell}" height="{cell}" rx="3" fill="{c}"/>'
-            for k, c in enumerate(BLUES)
-        )
-        + f'<text x="{legend_x + 40 + 5 * (cell + gap)}" y="{h - 18}" class="mo">more</text>'
-    )
-    stamp = dt.date.today().strftime("%d %b %Y")
-    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{h}" viewBox="0 0 {width} {h}" role="img" aria-label="{total} contributions in the last year">
-<style>
-.tt{{font:600 15px {SANS};fill:{INK}}}
-.mo{{font:11px {SANS};fill:{MUTED}}}
-@keyframes glow{{0%,100%{{opacity:1}}40%{{opacity:.2}}}}
-.d{{animation:glow 1s ease-in-out}}
-</style>
-<rect x=".5" y=".5" width="{width - 1}" height="{h - 1}" rx="14" fill="{BG}" stroke="{EDGE}"/>
-<text x="{left}" y="30" class="tt">{total} contributions in the last year</text>
-<text x="{width - 36}" y="30" class="mo" text-anchor="end">updated {stamp}</text>
-{''.join(months)}{wd}
-{''.join(cells)}
-{legend}
-</svg>"""
-    write("contrib.svg", svg)
-
-
 if __name__ == "__main__":
     header()
     card()
     footer()
-    if "--offline" not in sys.argv:
-        contrib()
