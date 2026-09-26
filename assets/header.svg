@@ -13,7 +13,7 @@
 <rect width="840" height="146" filter="url(#grain)" opacity=".5"/>
 <text x="70" y="25" class="cap">TECHNOLOGY  ·  DESIGN  ·  CREATION  ·  COFFEE</text>
 <text x="68" y="80" class="nm">Lavínia Alencar</text>
-<text x="46" y="116" class="pr">›</text>
-<g><clipPath id="c0"><rect x="72" y="98" height="26" width="0"/></clipPath><text x="72" y="116" clip-path="url(#c0)" class="ty">Analytics engineer</text><clipPath id="c1"><rect x="72" y="98" height="26" width="0"/></clipPath><text x="72" y="116" clip-path="url(#c1)" class="ty">Code, electronics, 3D printing</text>
-<g class="cur"><rect x="74" y="100" width="3" height="20" fill="#8497EE"/></g></g>
+<text x="46" y="121" class="pr">›</text>
+<g><clipPath id="c0"><rect x="72" y="103" height="26" width="0"/></clipPath><text x="72" y="121" clip-path="url(#c0)" class="ty">Analytics engineer</text><clipPath id="c1"><rect x="72" y="103" height="26" width="0"/></clipPath><text x="72" y="121" clip-path="url(#c1)" class="ty">Code, electronics, 3D printing</text>
+<g class="cur"><rect x="74" y="105" width="3" height="20" fill="#8497EE"/></g></g>
 </svg>

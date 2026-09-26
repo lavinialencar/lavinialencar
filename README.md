@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/header.svg?v=4d794d6e" width="100%" alt="Lavínia Alencar. Technology, design, creation, coffee. Analytics engineer; code, electronics, 3D printing." />
+  <img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/header.svg?v=b99929b0" width="100%" alt="Lavínia Alencar. Technology, design, creation, coffee. Analytics engineer; code, electronics, 3D printing." />
 </p>
 
 <p align="center">

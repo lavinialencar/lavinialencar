@@ -34,7 +34,7 @@ PHRASES = ["Analytics engineer", "Code, electronics, 3D printing"]
 
 def header():
     fs, cw = 18, 18 * 0.6  # monoespaçada: largura do caractere ~0.6 do corpo
-    x0, y0 = 72, 116
+    x0, y0 = 72, 121
     slot, cycle = 4.0, 4.0 * len(PHRASES)
     type_t, hold_t, del_t = 1.3, 2.9, 3.4
 
