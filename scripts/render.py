@@ -245,7 +245,7 @@ text{{font:13.5px {MONO};fill:{INK}}}
 
 
 # ---------------------------------------------------------------- botões
-# Botões de link do README, no lugar dos selos do shields.io: mesma paleta, ícone desenhado e seta.
+# Botões de link do README, no lugar dos selos do shields.io: mesma paleta, ícone desenhado.
 ICONES = {
     # casa: o hub pessoal
     "home": '<path d="M3 9.5 10 4l7 5.5V17a1 1 0 0 1-1 1h-3.5v-5h-5v5H4a1 1 0 0 1-1-1z" fill="none" stroke="{c}" stroke-width="1.6" stroke-linejoin="round"/>',
@@ -264,18 +264,16 @@ BOTOES = [
 def botoes():
     h, fs = 40, 14
     for nome, rotulo, icone, principal in BOTOES:
-        w = round(16 + 20 + 10 + len(rotulo) * fs * 0.54 + 8 + 10 + 16)
+        w = round(16 + 20 + 10 + len(rotulo) * fs * 0.54 + 18)
         fundo = "#2B41B8" if principal else BG
         borda = "#2B41B8" if principal else EDGE
         tinta = "#FFFFFF" if principal else INK
         cor_ic = "#CBD3F6" if principal else ACCENT
         tx = 16 + 20 + 10
-        seta_x = w - 16 - 10
         svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="{html.escape(rotulo)}">
 <rect x=".5" y=".5" width="{w - 1}" height="{h - 1}" rx="6" fill="{fundo}" stroke="{borda}"/>
 <g transform="translate(16,10)">{ICONES[icone].format(c=cor_ic)}</g>
 <text x="{tx}" y="{h / 2 + 5}" font-family="{SANS}" font-size="{fs}" font-weight="600" fill="{tinta}">{html.escape(rotulo)}</text>
-<path d="M{seta_x} {h / 2 + 4} l8 -8 M{seta_x + 2} {h / 2 - 4} h6 v6" fill="none" stroke="{cor_ic}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>"""
         write(nome, svg)
 

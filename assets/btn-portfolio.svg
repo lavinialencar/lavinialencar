@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="186" height="40" viewBox="0 0 186 40" role="img" aria-label="Data portfolio">
-<rect x=".5" y=".5" width="185" height="39" rx="6" fill="#1A1C21" stroke="#2A2D34"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="170" height="40" viewBox="0 0 170 40" role="img" aria-label="Data portfolio">
+<rect x=".5" y=".5" width="169" height="39" rx="6" fill="#1A1C21" stroke="#2A2D34"/>
 <g transform="translate(16,10)"><rect x="3.5" y="11" width="3" height="6" rx=".6" fill="#8497EE"/><rect x="8.5" y="7" width="3" height="10" rx=".6" fill="#8497EE"/><rect x="13.5" y="3.5" width="3" height="13.5" rx=".6" fill="#8497EE"/></g>
 <text x="46" y="25.0" font-family="Archivo,'Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="600" fill="#F2F2F0">Data portfolio</text>
-<path d="M160 24.0 l8 -8 M162 16.0 h6 v6" fill="none" stroke="#8497EE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
