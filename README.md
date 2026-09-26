@@ -16,7 +16,7 @@
 <br/>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/card.svg?v=e7a69e27" width="100%" alt="whoami: analytics engineer and maker from Belém; data with SQL, Python, Databricks, Airflow. Setup: macOS and Linux, MacBook Air M4, Ryzen desktop, ZimaOS home server with Docker, Bambu Lab P2S." />
+  <img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/card.svg?v=86aeb788" width="100%" alt="whoami: analytics engineer and maker from Belém; data with SQL, Python, Databricks, Airflow. Setup: macOS and Linux, MacBook Air M4, Ryzen desktop, ZimaOS home server with Docker, Bambu Lab P2S." />
 </p>
 
 ### Stack

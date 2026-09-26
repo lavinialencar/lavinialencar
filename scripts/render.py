@@ -202,10 +202,11 @@ def card():
     lh, top, pad = 26, 56, 36
     col_w = (W - 2 * pad) / 2
     rows = max(len(WHOAMI[1]), len(SETUP[1]))
-    h = top + (rows + 1) * lh + 24
+    h = top + (rows + 1) * lh + 40  # folga embaixo igual à de cima (topo do título ~40 px)
 
     def column(x, title, items, t0):
-        kw = max(len(k) for k, _ in items) + 1
+        kw = max(len(k) for k, _ in WHOAMI[1] + SETUP[1]) + 3  # mesma coluna de valor nos dois lados
+        vx = x + kw * 13.5 * 0.6
         out = [
             f'<text x="{x}" y="{top}" class="hd ln" style="animation-delay:{t0:.2f}s">{html.escape(title)}</text>',
             f'<text x="{x}" y="{top + lh}" class="mu ln" style="animation-delay:{t0 + .1:.2f}s">{"-" * len(title)}</text>',
@@ -213,10 +214,10 @@ def card():
         for i, (k, v) in enumerate(items):
             y = top + (i + 2) * lh
             d = t0 + 0.2 + i * 0.1
-            label = html.escape((k + ":").ljust(kw + 1)).replace(" ", "&#160;")
+            label = html.escape(k + ":")
             out.append(
                 f'<text x="{x}" y="{y}" class="ln" style="animation-delay:{d:.2f}s">'
-                f'<tspan class="k">{label}</tspan><tspan class="v">{html.escape(v)}</tspan></text>'
+                f'<tspan class="k">{label}</tspan><tspan class="v" x="{vx:.1f}">{html.escape(v)}</tspan></text>'
             )
         return "".join(out)
 
