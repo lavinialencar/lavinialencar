@@ -164,13 +164,13 @@ def network(h, x_from, n, seed, k=3, min_d=34):
 
 def footer():
     H = 64
-    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Somewhere between a SQL query and a print in progress">
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Brewing the next project">
 <defs>{GRAIN_DEFS}</defs>
 <style>{NET_CSS}.q{{font:13px {MONO};fill:{MUTED}}}</style>
 <rect width="{W}" height="{H}" fill="{BG}"/>
 {network(H, x_from=520, n=16, seed=11, min_d=24)}
 <rect width="{W}" height="{H}" filter="url(#grain)" opacity=".5"/>
-<text x="46" y="{H / 2 + 5}" class="q">somewhere between a SQL query and a print in progress</text>
+<text x="46" y="{H / 2 + 5}" class="q">brewing the next project_</text>
 </svg>"""
     write("footer.svg", svg)
 
