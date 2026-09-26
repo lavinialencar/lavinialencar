@@ -279,9 +279,13 @@ def botoes():
         write(nome, svg)
 
 
+RAW = "https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets"
+
+
 def versionar_readme():
     """Põe ?v=<hash do conteúdo> em cada assets/*.svg do README: o GitHub guarda a imagem em cache pelo endereço,
-    então imagem nova precisa de endereço novo pra aparecer na hora."""
+    então imagem nova precisa de endereço novo pra aparecer na hora. Endereço relativo não serve:
+    o GitHub corta a query dele; o absoluto passa inteiro pelo proxy de imagens."""
     import hashlib
     readme = OUT.parent / "README.md"
     texto = readme.read_text(encoding="utf-8")
@@ -289,9 +293,10 @@ def versionar_readme():
     def troca(m):
         nome = m.group(1)
         v = hashlib.sha256((OUT / nome).read_bytes()).hexdigest()[:8]
-        return f'src="assets/{nome}?v={v}"'
+        return f'src="{RAW}/{nome}?v={v}"'
 
-    readme.write_text(re.sub(r'src="assets/([\w.-]+\.svg)(?:\?v=\w+)?"', troca, texto), encoding="utf-8")
+    padrao = r'src="(?:assets|' + re.escape(RAW) + r')/([\w.-]+\.svg)(?:\?v=\w+)?"'
+    readme.write_text(re.sub(padrao, troca, texto), encoding="utf-8")
     print("ok README versionado")
 
 

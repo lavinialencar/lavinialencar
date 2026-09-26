@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/header.svg?v=4d794d6e" width="100%" alt="Lavínia Alencar. Technology, design, creation, coffee. Analytics engineer; code, electronics, 3D printing." />
+  <img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/header.svg?v=4d794d6e" width="100%" alt="Lavínia Alencar. Technology, design, creation, coffee. Analytics engineer; code, electronics, 3D printing." />
 </p>
 
 <p align="center">
@@ -8,15 +8,15 @@
 </p>
 
 <p align="center">
-  <a href="https://lavinialencar.com.br/en/"><img src="assets/btn-site.svg?v=03a7bb93" height="40" alt="Get to know me" /></a>
-  <a href="https://lavinialencar.com.br/en/freela/"><img src="assets/btn-portfolio.svg?v=67f85c38" height="40" alt="Data portfolio" /></a>
-  <a href="https://www.linkedin.com/in/lavinialencar/"><img src="assets/btn-linkedin.svg?v=e50ac0dc" height="40" alt="LinkedIn" /></a>
+  <a href="https://lavinialencar.com.br/en/"><img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/btn-site.svg?v=03a7bb93" height="40" alt="Get to know me" /></a>
+  <a href="https://lavinialencar.com.br/en/freela/"><img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/btn-portfolio.svg?v=67f85c38" height="40" alt="Data portfolio" /></a>
+  <a href="https://www.linkedin.com/in/lavinialencar/"><img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/btn-linkedin.svg?v=e50ac0dc" height="40" alt="LinkedIn" /></a>
 </p>
 
 <br/>
 
 <p align="center">
-  <img src="assets/card.svg?v=e7a69e27" width="100%" alt="whoami: analytics engineer and maker from Belém; data with SQL, Python, Databricks, Airflow. Setup: macOS and Linux, MacBook Air M4, Ryzen desktop, ZimaOS home server with Docker, Bambu Lab P2S." />
+  <img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/card.svg?v=e7a69e27" width="100%" alt="whoami: analytics engineer and maker from Belém; data with SQL, Python, Databricks, Airflow. Setup: macOS and Linux, MacBook Air M4, Ryzen desktop, ZimaOS home server with Docker, Bambu Lab P2S." />
 </p>
 
 ### Stack
@@ -81,5 +81,5 @@ open_to:   remote data projects, lavinialencar.com.br
 ```
 
 <p align="center">
-  <img src="assets/footer.svg?v=47f15610" width="100%" alt="" />
+  <img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/footer.svg?v=47f15610" width="100%" alt="" />
 </p>
