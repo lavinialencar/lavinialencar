@@ -163,12 +163,12 @@ def network(h, x_from, n, seed, k=3, min_d=34):
 
 
 def footer():
-    H = 64
+    H = 48
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Brewing the next project">
 <defs>{GRAIN_DEFS}</defs>
 <style>{NET_CSS}.q{{font:13px {MONO};fill:{MUTED}}}</style>
 <rect width="{W}" height="{H}" fill="{BG}"/>
-{network(H, x_from=520, n=16, seed=11, min_d=24)}
+{network(H, x_from=540, n=13, seed=11, min_d=20)}
 <rect width="{W}" height="{H}" filter="url(#grain)" opacity=".5"/>
 <text x="46" y="{H / 2 + 5}" class="q">brewing the next project_</text>
 </svg>"""
