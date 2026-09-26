@@ -33,7 +33,7 @@ PHRASES = ["Analytics engineer", "Code, electronics, 3D printing"]
 
 def header():
     fs, cw = 24, 24 * 0.6  # monoespaçada: largura do caractere ~0.6 do corpo
-    x0, y0 = 72, 134
+    x0, y0 = 72, 118
     slot, cycle = 4.0, 4.0 * len(PHRASES)
     type_t, hold_t, del_t = 1.3, 2.9, 3.4
 
@@ -67,7 +67,7 @@ def header():
     css.append(f".cur{{animation:cur {cycle}s linear infinite;animation-delay:-{type_t}s}}")
     css.append("@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}.cur rect{animation:blink 1s step-end infinite}")
 
-    H = 176
+    H = 146
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Lavínia Alencar: {', '.join(PHRASES)}">
 <defs>{GRAIN_DEFS}</defs>
 <style>
@@ -79,10 +79,10 @@ def header():
 {NET_CSS}
 </style>
 <rect width="{W}" height="{H}" fill="{BG}"/>
-{network(H, x_from=440, n=44, seed=7)}
+{network(H, x_from=440, n=38, seed=7)}
 <rect width="{W}" height="{H}" filter="url(#grain)" opacity=".5"/>
-<text x="{x0 - 2}" y="36" class="cap">TECHNOLOGY  ·  DESIGN  ·  CREATION  ·  COFFEE</text>
-<text x="{x0 - 4}" y="88" class="nm">Lavínia Alencar</text>
+<text x="{x0 - 2}" y="30" class="cap">TECHNOLOGY  ·  DESIGN  ·  CREATION  ·  COFFEE</text>
+<text x="{x0 - 4}" y="80" class="nm">Lavínia Alencar</text>
 <text x="{x0 - 26}" y="{y0}" class="pr">›</text>
 <g>{''.join(texts)}
 <g class="cur"><rect x="{x0 + 2}" y="{y0 - fs + 2}" width="3" height="{fs + 2}" fill="{ACCENT}"/></g></g>
