@@ -28,7 +28,7 @@ def write(name, svg):
 
 
 # ---------------------------------------------------------------- cabeçalho
-PHRASES = ["Analytics engineer", "Maker from the Amazon", "Code, electronics, 3D printing"]
+PHRASES = ["Analytics engineer", "Technology · Design · Creation · Coffee", "Code, electronics, 3D printing"]
 
 
 def header():
@@ -76,10 +76,10 @@ def header():
 .pr{{font:500 {fs}px {MONO};fill:{MUTED}}}
 .ty{{font:500 {fs}px {MONO};fill:{ACCENT}}}
 {''.join(css)}
-{RIDGE_CSS}
+{NET_CSS}
 </style>
 <rect width="{W}" height="{H}" fill="{BG}"/>
-{ridges(H, x_from=430, rows=16, y_top=58, gap=10, seed=7, peak=(4, 700, 70))}
+{network(H, x_from=440, n=58, seed=7)}
 <rect width="{W}" height="{H}" filter="url(#grain)" opacity=".5"/>
 <text x="{x0 - 2}" y="44" class="cap">BELÉM, PA  ·  1°27′S 48°30′W</text>
 <text x="{x0 - 4}" y="104" class="nm">Lavínia Alencar</text>
@@ -90,19 +90,21 @@ def header():
     write("header.svg", svg)
 
 
-# ---------------------------------------------------------------- ridgelines
-# Linhas empilhadas: ao mesmo tempo gráfico de dados, camada de impressão 3D
-# e curva de nível de rio. Um trecho claro corre na linha da frente, como o bico.
+# ---------------------------------------------------------------- rede
+# Pontos conectados: nós de um grafo de dados. Alguns nós pulsam e um sinal
+# claro corre por algumas arestas. O quadro parado já mostra a rede inteira.
 GRAIN_DEFS = (
     '<filter id="grain" x="0" y="0" width="100%" height="100%">'
     '<feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/>'
     '<feColorMatrix values="0 0 0 0 .95  0 0 0 0 .95  0 0 0 0 .94  0 0 0 .08 0"/></filter>'
     '<linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
-    '<stop offset=".35" stop-color="#fff"/><stop offset="1" stop-color="#fff"/></linearGradient>'
+    '<stop offset=".4" stop-color="#fff"/><stop offset="1" stop-color="#fff"/></linearGradient>'
 )
-RIDGE_CSS = (
-    "@keyframes head{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}"
-    ".head{animation:head 7s linear infinite;animation-delay:-2.5s}"
+NET_CSS = (
+    "@keyframes run{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}"
+    ".sig{animation:run 2.4s linear infinite}"
+    "@keyframes beat{0%,100%{opacity:1}50%{opacity:.35}}"
+    ".hub{animation:beat 3s ease-in-out infinite}"
 )
 
 
@@ -112,48 +114,61 @@ def _mix(c1, c2, t):
     return "#" + "".join(f"{round(x + (y - x) * t):02X}" for x, y in zip(a, b))
 
 
-def ridges(h, x_from, rows, y_top, gap, seed, peak=None, amp=34, x_to=None):
+def network(h, x_from, n, seed, k=3, min_d=34):
     import math
     import random
 
     rnd = random.Random(seed)
-    x_to = x_to or W + 20
+    x_to = W + 10
     span = x_to - x_from
-    xs = [x_from + span * k / 120 for k in range(121)]
-    mid = x_from + span * 0.55
-    out = []
-    front = ""
-    for i in range(rows):
-        base = y_top + i * gap
-        bumps = [(rnd.uniform(x_from + span * .2, x_to - span * .1), rnd.uniform(.3, 1) * amp, rnd.uniform(14, 40))
-                 for _ in range(rnd.randint(3, 6))]
-        if peak and peak[0] == i:
-            bumps.append((peak[1], peak[2], 34))
-        pts = []
-        for x in xs:
-            env = math.exp(-((x - mid) / (span * .42)) ** 2)
-            y = sum(a * math.exp(-((x - c) / w) ** 2) for c, a, w in bumps) * env
-            y += rnd.uniform(0, 1.6) * env
-            pts.append((x, base - y))
-        line = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in pts)
-        t = i / (rows - 1)
-        stroke = _mix("#1D2E85", "#8497EE", t ** 1.2)
-        out.append(
-            f'<path d="{line} L{x_to},{h + 2} L{x_from},{h + 2}Z" fill="{BG}"/>'
-            f'<path d="{line}" fill="none" stroke="{stroke}" stroke-width="{1 + t * .6:.2f}"/>'
-        )
-        front = line
-    head = f'<path class="head" d="{front}" pathLength="1000" fill="none" stroke="#E7EAF8" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="36 964"/>'
-    return f'<mask id="m{seed}"><rect x="{x_from}" width="{span}" height="{h}" fill="url(#fade)"/></mask><g mask="url(#m{seed})">{"".join(out)}{head}</g>'
+    pts = []
+    tries = 0
+    while len(pts) < n and tries < 5000:  # amostragem com distância mínima, pra não embolar
+        tries += 1
+        x = x_from + span * (rnd.random() ** 0.7)  # mais denso à direita
+        y = rnd.uniform(-8, h + 8)
+        if all((x - px) ** 2 + (y - py) ** 2 > min_d ** 2 for px, py in pts):
+            pts.append((x, y))
+    edges = set()
+    for i, (x, y) in enumerate(pts):
+        near = sorted(range(len(pts)), key=lambda j: (pts[j][0] - x) ** 2 + (pts[j][1] - y) ** 2)[1:k + 1]
+        for j in near:
+            edges.add((min(i, j), max(i, j)))
+    lines, sigs = [], []
+    for e, (i, j) in enumerate(sorted(edges)):
+        (x1, y1), (x2, y2) = pts[i], pts[j]
+        t = min(1, max(0, ((x1 + x2) / 2 - x_from) / span))
+        col = _mix("#2A2D34", "#2B41B8", t)
+        lines.append(f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="{col}" stroke-width="1"/>')
+        if rnd.random() < 0.14 and t > 0.3:
+            d = rnd.uniform(0, 2.4)
+            sigs.append(
+                f'<line class="sig" style="animation-delay:-{d:.2f}s" x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" '
+                f'pathLength="100" stroke="#CBD3F6" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="14 86"/>'
+            )
+    dots = []
+    deg = {}
+    for i, j in edges:
+        deg[i] = deg.get(i, 0) + 1
+        deg[j] = deg.get(j, 0) + 1
+    for i, (x, y) in enumerate(pts):
+        t = min(1, max(0, (x - x_from) / span))
+        if deg.get(i, 0) >= k + 2:  # nó com muita ligação vira hub
+            d = rnd.uniform(0, 3)
+            dots.append(f'<circle class="hub" style="animation-delay:-{d:.2f}s" cx="{x:.1f}" cy="{y:.1f}" r="4.2" fill="#2B41B8" stroke="#8497EE" stroke-width="1.4"/>')
+        else:
+            dots.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{1.6 + t:.1f}" fill="{_mix("#4A4D55", "#8497EE", t)}"/>')
+    return (f'<mask id="m{seed}"><rect x="{x_from}" width="{span}" height="{h}" fill="url(#fade)"/></mask>'
+            f'<g mask="url(#m{seed})">{"".join(lines)}{"".join(sigs)}{"".join(dots)}</g>')
 
 
 def footer():
     H = 110
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Built with SQL, Python and a 3D printer humming nearby">
 <defs>{GRAIN_DEFS}</defs>
-<style>{RIDGE_CSS}.q{{font:13px {MONO};fill:{MUTED}}}</style>
+<style>{NET_CSS}.q{{font:13px {MONO};fill:{MUTED}}}</style>
 <rect width="{W}" height="{H}" fill="{BG}"/>
-{ridges(H, x_from=480, rows=7, y_top=50, gap=9, seed=11, amp=22)}
+{network(H, x_from=500, n=22, seed=11, min_d=28)}
 <rect width="{W}" height="{H}" filter="url(#grain)" opacity=".5"/>
 <text x="46" y="{H / 2 + 5}" class="q">built with SQL, Python and a 3D printer humming nearby</text>
 </svg>"""

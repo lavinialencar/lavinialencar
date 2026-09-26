@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/header.svg" width="100%" alt="Lavínia Alencar: Analytics engineer, Maker from the Amazon, Code, electronics, 3D printing" />
+  <img src="assets/header.svg" width="100%" alt="Lavínia Alencar: Analytics engineer, Technology, Design, Creation, Coffee, Code, electronics, 3D printing" />
 </p>
 
 <p align="center">
@@ -56,32 +56,6 @@ A coffee scale that builds the recipe from the taste you want and guides the bre
 |---|---|
 | **Stack** | ESP32-S3, HX711, 2.8" IPS, Fusion, PETG |
 | **Repo** | [lavinialencar/smart-coffee-scale](https://github.com/lavinialencar/smart-coffee-scale) |
-
-</details>
-
-<details>
-<summary><b>meridian</b> · personal productivity system in a single HTML file</summary>
-<br/>
-
-A unified personal productivity system that lives in one file. Local-first, zero build, zero dependencies: open it in the browser and it works.
-
-| | |
-|---|---|
-| **Stack** | HTML, CSS, vanilla JavaScript, browser storage |
-| **Repo** | [lavinialencar/meridian](https://github.com/lavinialencar/meridian) |
-
-</details>
-
-<details>
-<summary><b>eda-journey</b> · interactive exploratory data analysis guide</summary>
-<br/>
-
-A five-phase EDA guide. Upload a local CSV and walk through it step by step, with a collaborative skill to pair on the analysis.
-
-| | |
-|---|---|
-| **Stack** | HTML, JavaScript, local CSV parsing |
-| **Repo** | [lavinialencar/eda-journey](https://github.com/lavinialencar/eda-journey) |
 
 </details>
 
