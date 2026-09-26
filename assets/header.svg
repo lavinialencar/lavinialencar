@@ -3,9 +3,9 @@
 <style>
 .cap{font:600 11px 'IBM Plex Mono','SFMono-Regular',Menlo,Consolas,monospace;fill:#B8BAC2;letter-spacing:2px}
 .nm{font:800 54px Archivo,'Helvetica Neue',Arial,sans-serif;fill:#F2F2F0;letter-spacing:-1.5px}
-.pr{font:500 24px 'IBM Plex Mono','SFMono-Regular',Menlo,Consolas,monospace;fill:#B8BAC2}
-.ty{font:500 24px 'IBM Plex Mono','SFMono-Regular',Menlo,Consolas,monospace;fill:#8497EE}
-@keyframes t0{0%{width:0}0.000%{width:0;animation-timing-function:steps(18,end)}16.250%{width:259.2px}36.250%{width:259.2px;animation-timing-function:steps(18,end)}42.500%{width:0}100%{width:0}}#c0 rect{animation:t0 8.0s linear infinite;animation-delay:-1.3s}@keyframes t1{0%{width:0}50.000%{width:0;animation-timing-function:steps(30,end)}66.250%{width:432.0px}86.250%{width:432.0px;animation-timing-function:steps(30,end)}92.500%{width:0}100%{width:0}}#c1 rect{animation:t1 8.0s linear infinite;animation-delay:-1.3s}@keyframes cur{0%{transform:translateX(0)}0.000%{transform:translateX(0);animation-timing-function:steps(18,end)}16.250%{transform:translateX(259.2px)}36.250%{transform:translateX(259.2px);animation-timing-function:steps(18,end)}42.500%{transform:translateX(0)}50.000%{transform:translateX(0);animation-timing-function:steps(30,end)}66.250%{transform:translateX(432.0px)}86.250%{transform:translateX(432.0px);animation-timing-function:steps(30,end)}92.500%{transform:translateX(0)}100%{transform:translateX(0)}}.cur{animation:cur 8.0s linear infinite;animation-delay:-1.3s}@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}.cur rect{animation:blink 1s step-end infinite}
+.pr{font:500 20px 'IBM Plex Mono','SFMono-Regular',Menlo,Consolas,monospace;fill:#B8BAC2}
+.ty{font:500 20px 'IBM Plex Mono','SFMono-Regular',Menlo,Consolas,monospace;fill:#8497EE}
+@keyframes t0{0%{width:0}0.000%{width:0;animation-timing-function:steps(18,end)}16.250%{width:216.0px}36.250%{width:216.0px;animation-timing-function:steps(18,end)}42.500%{width:0}100%{width:0}}#c0 rect{animation:t0 8.0s linear infinite;animation-delay:-1.3s}@keyframes t1{0%{width:0}50.000%{width:0;animation-timing-function:steps(30,end)}66.250%{width:360.0px}86.250%{width:360.0px;animation-timing-function:steps(30,end)}92.500%{width:0}100%{width:0}}#c1 rect{animation:t1 8.0s linear infinite;animation-delay:-1.3s}@keyframes cur{0%{transform:translateX(0)}0.000%{transform:translateX(0);animation-timing-function:steps(18,end)}16.250%{transform:translateX(216.0px)}36.250%{transform:translateX(216.0px);animation-timing-function:steps(18,end)}42.500%{transform:translateX(0)}50.000%{transform:translateX(0);animation-timing-function:steps(30,end)}66.250%{transform:translateX(360.0px)}86.250%{transform:translateX(360.0px);animation-timing-function:steps(30,end)}92.500%{transform:translateX(0)}100%{transform:translateX(0)}}.cur{animation:cur 8.0s linear infinite;animation-delay:-1.3s}@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}.cur rect{animation:blink 1s step-end infinite}
 @keyframes run{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}.sig{animation:run 2.4s linear infinite}@keyframes beat{0%,100%{opacity:1}50%{opacity:.35}}.hub{animation:beat 3s ease-in-out infinite}
 </style>
 <rect width="840" height="146" fill="#1A1C21"/>
@@ -13,7 +13,7 @@
 <rect width="840" height="146" filter="url(#grain)" opacity=".5"/>
 <text x="70" y="30" class="cap">TECHNOLOGY  ·  DESIGN  ·  CREATION  ·  COFFEE</text>
 <text x="68" y="80" class="nm">Lavínia Alencar</text>
-<text x="46" y="118" class="pr">›</text>
-<g><clipPath id="c0"><rect x="72" y="94" height="32" width="0"/></clipPath><text x="72" y="118" clip-path="url(#c0)" class="ty">Analytics engineer</text><clipPath id="c1"><rect x="72" y="94" height="32" width="0"/></clipPath><text x="72" y="118" clip-path="url(#c1)" class="ty">Code, electronics, 3D printing</text>
-<g class="cur"><rect x="74" y="96" width="3" height="26" fill="#8497EE"/></g></g>
+<text x="46" y="116" class="pr">›</text>
+<g><clipPath id="c0"><rect x="72" y="96" height="28" width="0"/></clipPath><text x="72" y="116" clip-path="url(#c0)" class="ty">Analytics engineer</text><clipPath id="c1"><rect x="72" y="96" height="28" width="0"/></clipPath><text x="72" y="116" clip-path="url(#c1)" class="ty">Code, electronics, 3D printing</text>
+<g class="cur"><rect x="74" y="98" width="3" height="22" fill="#8497EE"/></g></g>
 </svg>
