@@ -144,70 +144,75 @@ def footer():
 
 
 # ---------------------------------------------------------------- cartão
-INFO = [
-    ("lavinia@github", None),
-    ("-" * 14, None),
-    ("Role", "Analytics engineer and maker"),
-    ("Based in", "Belém, Brazilian Amazon"),
-    ("Experience", "iFood, Nuvemshop"),
+# Duas colunas no espírito do neofetch: quem sou e com o que trabalho.
+WHOAMI = ("lavinia@github", [
+    ("Role", "analytics engineer, maker"),
+    ("Based", "Belém, Brazilian Amazon"),
+    ("Exp", "iFood, Nuvemshop"),
     ("Data", "SQL, Spark, Databricks, Airflow"),
-    ("Web", "Astro, Cloudflare Pages and Workers"),
-    ("Making", "Bambu Lab P2S, Fusion, OrcaSlicer"),
+    ("Web", "Astro, Cloudflare Workers"),
+    ("Make", "Fusion, OrcaSlicer, electronics"),
     ("AI", "Claude Code, my own skills"),
     ("Site", "lavinialencar.com.br"),
-]
-BARS = [3, 5, 4, 7, 6, 9, 8, 11]  # desenho da esquerda: um gráfico de barras
+])
+SETUP = ("~/setup", [
+    ("OS", "macOS, Linux (Windows for games)"),
+    ("Laptop", "MacBook Air M4"),
+    ("Desktop", "Ryzen 5 5600GT, RTX 5060"),
+    ("NAS", "ZimaOS home server, on 24/7"),
+    ("Runs", "Docker, self-hosted apps"),
+    ("Lab", "mini PC test box, on 24/7"),
+    ("Printer", "Bambu Lab P2S + AMS 2 Pro"),
+    ("Desk", "27in 180Hz, KVM switch"),
+])
 
 
 def card():
-    lh, top, tx = 26, 52, 330
-    rows = len(INFO)
-    h = top + rows * lh + 56
-    lines = []
-    for i, (k, v) in enumerate(INFO):
-        y = top + i * lh
-        d = 0.35 + i * 0.12
-        if v is None:
-            cls = "hd" if i == 0 else "mu"
-            lines.append(f'<text x="{tx}" y="{y}" class="{cls} ln" style="animation-delay:{d:.2f}s">{html.escape(k)}</text>')
-        else:
-            lines.append(
-                f'<text x="{tx}" y="{y}" class="ln" style="animation-delay:{d:.2f}s">'
-                f'<tspan class="k">{html.escape(k)}</tspan><tspan class="mu">: </tspan>'
-                f'<tspan class="v">{html.escape(v)}</tspan></text>'
+    lh, top, pad = 26, 56, 36
+    col_w = (W - 2 * pad) / 2
+    rows = max(len(WHOAMI[1]), len(SETUP[1]))
+    h = top + (rows + 2) * lh + 40
+
+    def column(x, title, items, t0):
+        kw = max(len(k) for k, _ in items) + 1
+        out = [
+            f'<text x="{x}" y="{top}" class="hd ln" style="animation-delay:{t0:.2f}s">{html.escape(title)}</text>',
+            f'<text x="{x}" y="{top + lh}" class="mu ln" style="animation-delay:{t0 + .1:.2f}s">{"-" * len(title)}</text>',
+        ]
+        for i, (k, v) in enumerate(items):
+            y = top + (i + 2) * lh
+            d = t0 + 0.2 + i * 0.1
+            label = html.escape((k + ":").ljust(kw + 1)).replace(" ", "&#160;")
+            out.append(
+                f'<text x="{x}" y="{y}" class="ln" style="animation-delay:{d:.2f}s">'
+                f'<tspan class="k">{label}</tspan><tspan class="v">{html.escape(v)}</tspan></text>'
             )
-    sw_y = top + rows * lh + 4
-    d = 0.35 + rows * 0.12
+        return "".join(out)
+
+    left = column(pad, *WHOAMI, 0.2)
+    right = column(pad + col_w + 12, *SETUP, 0.6)
+    divider = f'<line x1="{pad + col_w - 6}" y1="{top - 18}" x2="{pad + col_w - 6}" y2="{top + (rows + 1) * lh + 4}" stroke="{EDGE}"/>'
+    sw_y = h - 30
     swatches = "".join(
-        f'<rect x="{tx + k * 30}" y="{sw_y}" width="26" height="14" fill="{c}"/>' for k, c in enumerate(BLUES)
+        f'<rect x="{pad + k * 22}" y="{sw_y}" width="18" height="8" rx="2" fill="{c}"/>' for k, c in enumerate(BLUES)
     )
+    alt = "; ".join(f"{k}: {v}" for k, v in WHOAMI[1] + SETUP[1])
 
-    cell, gap, base, bx = 14, 4, h - 56, 52
-    bars = []
-    for j, n in enumerate(BARS):
-        x = bx + j * (cell + gap)
-        for r in range(n):
-            y = base - (r + 1) * (cell + gap) + gap
-            c = BLUES[min(4, 1 + r * 4 // max(BARS))]
-            dl = 0.1 + j * 0.06 + r * 0.035
-            bars.append(f'<rect class="px" style="animation-delay:{dl:.2f}s" x="{x}" y="{y}" width="{cell}" height="{cell}" rx="2" fill="{c}"/>')
-
-    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{h}" viewBox="0 0 {W} {h}" role="img" aria-label="Lavínia Alencar, analytics engineer and maker from Belém. Data: SQL, Spark, Databricks, Airflow. Web: Astro, Cloudflare. Making: Bambu Lab P2S, Fusion, OrcaSlicer.">
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{h}" viewBox="0 0 {W} {h}" role="img" aria-label="{html.escape(alt)}">
 <style>
-text{{font:15px {MONO};fill:{INK}}}
+text{{font:13.5px {MONO};fill:{INK}}}
 .hd{{fill:{ACCENT};font-weight:700}}
 .k{{fill:{ACCENT};font-weight:700}}
 .mu{{fill:{MUTED}}}
 .v{{fill:{INK}}}
 @keyframes glow{{0%,100%{{opacity:1}}40%{{opacity:.25}}}}
 .ln{{animation:glow .9s ease-in-out}}
-.px{{animation:glow 1.2s ease-in-out 2}}
-.sw{{animation:glow 1s ease-in-out;animation-delay:{d:.2f}s}}
 </style>
 <rect x=".5" y=".5" width="{W - 1}" height="{h - 1}" rx="14" fill="{BG}" stroke="{EDGE}"/>
-{''.join(bars)}
-{''.join(lines)}
-<g class="sw">{swatches}</g>
+{divider}
+{left}
+{right}
+{swatches}
 </svg>"""
     write("card.svg", svg)
 

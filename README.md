@@ -16,7 +16,7 @@
 <br/>
 
 <p align="center">
-  <img src="assets/card.svg" width="100%" alt="How I work. Data: SQL, Spark, Databricks, Airflow. Web: Astro, Cloudflare Pages and Workers. Making: Bambu Lab P2S, Autodesk Fusion, OrcaSlicer. AI: Claude Code with my own skills and workflows." />
+  <img src="assets/card.svg" width="100%" alt="whoami: analytics engineer and maker from Belém; data with SQL, Spark, Databricks, Airflow. Setup: macOS and Linux, MacBook Air M4, Ryzen desktop, ZimaOS home server with Docker, Bambu Lab P2S." />
 </p>
 
 ### Stack
@@ -44,6 +44,19 @@ A workflow for any printer, with a tested Bambu Lab track: a monitor that sends 
 |---|---|
 | **Stack** | Python, Make, OrcaSlicer, Bambu Lab P2S |
 | **Repo** | [lavinialencar/3d-print-workflow](https://github.com/lavinialencar/3d-print-workflow) |
+
+</details>
+
+<details>
+<summary><b>smart-coffee-scale</b> · pour-over scale that guides every pour (concept)</summary>
+<br/>
+
+A coffee scale that builds the recipe from the taste you want and guides the brew on its own screen: when to pour, how much, when it is done, and what to change next time. Designed and simulated, prototype next.
+
+| | |
+|---|---|
+| **Stack** | ESP32-S3, HX711, 2.8" IPS, Fusion, PETG |
+| **Repo** | [lavinialencar/smart-coffee-scale](https://github.com/lavinialencar/smart-coffee-scale) |
 
 </details>
 
@@ -95,9 +108,9 @@ The landing page of Cafuaçu, a newsletter about specialty coffee in Brazil. Sta
 ### Current focus
 
 ```yaml
-building:  AI tooling for my own workflows, a local-first finance system
-printing:  functional parts on a Bambu Lab P2S
-learning:  agent design, data products for small businesses
+focus:     3d-print-workflow, the AI conductor skill for my Bambu Lab P2S
+           smart-coffee-scale, a pour-over scale that guides every pour
+learning:  firmware on ESP32, agent design
 open_to:   remote data projects, lavinialencar.com.br
 ```
 
