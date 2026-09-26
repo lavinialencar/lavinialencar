@@ -4,6 +4,7 @@ Só biblioteca padrão. Depois de mudar um texto aqui:
     python3 scripts/render.py
 """
 import html
+import re
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "assets"
@@ -278,8 +279,25 @@ def botoes():
         write(nome, svg)
 
 
+def versionar_readme():
+    """Põe ?v=<hash do conteúdo> em cada assets/*.svg do README: o GitHub guarda a imagem em cache pelo endereço,
+    então imagem nova precisa de endereço novo pra aparecer na hora."""
+    import hashlib
+    readme = OUT.parent / "README.md"
+    texto = readme.read_text(encoding="utf-8")
+
+    def troca(m):
+        nome = m.group(1)
+        v = hashlib.sha256((OUT / nome).read_bytes()).hexdigest()[:8]
+        return f'src="assets/{nome}?v={v}"'
+
+    readme.write_text(re.sub(r'src="assets/([\w.-]+\.svg)(?:\?v=\w+)?"', troca, texto), encoding="utf-8")
+    print("ok README versionado")
+
+
 if __name__ == "__main__":
     header()
     card()
     footer()
     botoes()
+    versionar_readme()
