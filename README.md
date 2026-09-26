@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="https://lavinialencar.com.br/en/"><img src="https://img.shields.io/badge/Get_to_know_me-0F2E57?style=for-the-badge" alt="Get to know me" /></a>
-  <a href="https://lavinialencar.com.br/en/freela/"><img src="https://img.shields.io/badge/Data_portfolio-2F5A8C?style=for-the-badge" alt="Data portfolio" /></a>
+  <a href="https://lavinialencar.com.br/en/"><img src="https://img.shields.io/badge/Get_to_know_me-2B41B8?style=for-the-badge" alt="Get to know me" /></a>
+  <a href="https://lavinialencar.com.br/en/freela/"><img src="https://img.shields.io/badge/Data_portfolio-1A1C21?style=for-the-badge" alt="Data portfolio" /></a>
 </p>
 
 <br/>
@@ -25,11 +25,11 @@
   <img src="https://skillicons.dev/icons?i=py,postgres,aws,astro,cloudflare,workers,html,js,git,githubactions,arduino,figma&theme=dark" alt="Python, Postgres, AWS, Astro, Cloudflare, Workers, HTML, JavaScript, Git, GitHub Actions, Arduino, Figma" />
 </p>
 <p>
-  <img src="https://img.shields.io/badge/Spark-0F2E57?style=flat-square&logo=apachespark&logoColor=C4D7EE" alt="Spark" />
-  <img src="https://img.shields.io/badge/Databricks-0F2E57?style=flat-square&logo=databricks&logoColor=C4D7EE" alt="Databricks" />
-  <img src="https://img.shields.io/badge/Airflow-0F2E57?style=flat-square&logo=apacheairflow&logoColor=C4D7EE" alt="Airflow" />
-  <img src="https://img.shields.io/badge/Looker-0F2E57?style=flat-square&logo=looker&logoColor=C4D7EE" alt="Looker" />
-  <img src="https://img.shields.io/badge/Tableau-0F2E57?style=flat-square" alt="Tableau" />
+  <img src="https://img.shields.io/badge/Spark-1A1C21?style=flat-square&logo=apachespark&logoColor=8497EE" alt="Spark" />
+  <img src="https://img.shields.io/badge/Databricks-1A1C21?style=flat-square&logo=databricks&logoColor=8497EE" alt="Databricks" />
+  <img src="https://img.shields.io/badge/Airflow-1A1C21?style=flat-square&logo=apacheairflow&logoColor=8497EE" alt="Airflow" />
+  <img src="https://img.shields.io/badge/Looker-1A1C21?style=flat-square&logo=looker&logoColor=8497EE" alt="Looker" />
+  <img src="https://img.shields.io/badge/Tableau-1A1C21?style=flat-square" alt="Tableau" />
 </p>
 
 ### What I'm building

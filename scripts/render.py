@@ -13,16 +13,16 @@ from pathlib import Path
 
 USER = "lavinialencar"
 OUT = Path(__file__).resolve().parent.parent / "assets"
-MONO = "'JetBrains Mono','SFMono-Regular',Menlo,Consolas,monospace"
-SANS = "-apple-system,'Segoe UI',Helvetica,Arial,sans-serif"
+MONO = "'IBM Plex Mono','SFMono-Regular',Menlo,Consolas,monospace"
+SANS = "Archivo,'Helvetica Neue',Arial,sans-serif"
 
-# Paleta azul do padrão visual: degradê de #0F2E57 a #C4D7EE.
-BG = "#0A1F3B"
-EDGE = "#1E4270"
-INK = "#E6EEF8"
-MUTED = "#8FA9CB"
-BLUES = ["#15355E", "#2F5A8C", "#5E88BC", "#92B3DA", "#C4D7EE"]
-ACCENT = "#92B3DA"
+# Paleta de lavinialencar.com.br (assets/tokens.css): carvão com o azul sinal.
+BG = "#1A1C21"       # carvao2
+EDGE = "#2A2D34"     # regua-esc
+INK = "#F2F2F0"      # claro
+MUTED = "#B8BAC2"    # claro-esc
+BLUES = ["#2A2D34", "#1D2E85", "#2B41B8", "#8497EE", "#CBD3F6"]  # vazio, sinal escuro, sinal, sinal-cl, sinal claro
+ACCENT = "#8497EE"   # sinal-cl
 
 W = 840
 
@@ -102,7 +102,7 @@ def header():
 GRAIN_DEFS = (
     '<filter id="grain" x="0" y="0" width="100%" height="100%">'
     '<feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/>'
-    '<feColorMatrix values="0 0 0 0 .77  0 0 0 0 .84  0 0 0 0 .93  0 0 0 .09 0"/></filter>'
+    '<feColorMatrix values="0 0 0 0 .95  0 0 0 0 .95  0 0 0 0 .94  0 0 0 .08 0"/></filter>'
     '<linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
     '<stop offset=".35" stop-color="#fff"/><stop offset="1" stop-color="#fff"/></linearGradient>'
 )
@@ -143,13 +143,13 @@ def ridges(h, x_from, rows, y_top, gap, seed, peak=None, amp=34, x_to=None):
             pts.append((x, base - y))
         line = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in pts)
         t = i / (rows - 1)
-        stroke = _mix("#2F5A8C", "#C4D7EE", t ** 1.4)
+        stroke = _mix("#1D2E85", "#8497EE", t ** 1.2)
         out.append(
             f'<path d="{line} L{x_to},{h + 2} L{x_from},{h + 2}Z" fill="{BG}"/>'
             f'<path d="{line}" fill="none" stroke="{stroke}" stroke-width="{1 + t * .6:.2f}"/>'
         )
         front = line
-    head = f'<path class="head" d="{front}" pathLength="1000" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="36 964"/>'
+    head = f'<path class="head" d="{front}" pathLength="1000" fill="none" stroke="#E7EAF8" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="36 964"/>'
     return f'<mask id="m{seed}"><rect x="{x_from}" width="{span}" height="{h}" fill="url(#fade)"/></mask><g mask="url(#m{seed})">{"".join(out)}{head}</g>'
 
 
@@ -186,7 +186,6 @@ SETUP = ("~/setup", [
     ("Runs", "Docker, self-hosted apps"),
     ("Lab", "mini PC test box, on 24/7"),
     ("Printer", "Bambu Lab P2S + AMS 2 Pro"),
-    ("Desk", "27in 180Hz, KVM switch"),
 ])
 
 
@@ -194,7 +193,7 @@ def card():
     lh, top, pad = 26, 56, 36
     col_w = (W - 2 * pad) / 2
     rows = max(len(WHOAMI[1]), len(SETUP[1]))
-    h = top + (rows + 2) * lh + 40
+    h = top + (rows + 1) * lh + 24
 
     def column(x, title, items, t0):
         kw = max(len(k) for k, _ in items) + 1
@@ -215,10 +214,6 @@ def card():
     left = column(pad, *WHOAMI, 0.2)
     right = column(pad + col_w + 12, *SETUP, 0.6)
     divider = f'<line x1="{pad + col_w - 6}" y1="{top - 18}" x2="{pad + col_w - 6}" y2="{top + (rows + 1) * lh + 4}" stroke="{EDGE}"/>'
-    sw_y = h - 30
-    swatches = "".join(
-        f'<rect x="{pad + k * 22}" y="{sw_y}" width="18" height="8" rx="2" fill="{c}"/>' for k, c in enumerate(BLUES)
-    )
     alt = "; ".join(f"{k}: {v}" for k, v in WHOAMI[1] + SETUP[1])
 
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{h}" viewBox="0 0 {W} {h}" role="img" aria-label="{html.escape(alt)}">
@@ -235,7 +230,6 @@ text{{font:13.5px {MONO};fill:{INK}}}
 {divider}
 {left}
 {right}
-{swatches}
 </svg>"""
     write("card.svg", svg)
 
