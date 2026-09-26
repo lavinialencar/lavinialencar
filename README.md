@@ -61,6 +61,19 @@ A coffee scale that builds the recipe from the taste you want and guides the bre
 </details>
 
 <details>
+<summary><b>ember-template</b> · personal finance for Brazilian bank accounts via Open Finance</summary>
+<br/>
+
+A personal finance pipeline you run on your own machine: it reads statements and card bills through Open Finance (Pluggy), classifies every transaction with rules you control, sends alerts to your phone and builds a local dashboard. Encrypted backup, no personal data in the repo, offline demo in two minutes.
+
+| | |
+|---|---|
+| **Stack** | Python (stdlib only), Postgres, Docker, n8n, ntfy |
+| **Repo** | [lavinialencar/ember-template](https://github.com/lavinialencar/ember-template) |
+
+</details>
+
+<details>
 <summary><b>cafuacu-landing</b> · website of Cafuaçu, a specialty coffee newsletter</summary>
 <br/>
 
