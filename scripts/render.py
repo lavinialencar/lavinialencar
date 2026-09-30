@@ -29,7 +29,7 @@ def write(name, svg):
 
 
 # ---------------------------------------------------------------- cabeçalho
-PHRASES = ["Analytics engineer", "Code, electronics, 3D printing"]
+PHRASES = ["Data engineer", "Code, electronics, 3D printing"]
 
 
 def header():
@@ -179,7 +179,7 @@ def footer():
 # ---------------------------------------------------------------- cartão
 # Duas colunas no espírito do neofetch: quem sou e com o que trabalho.
 WHOAMI = ("lavinia@github", [
-    ("Role", "analytics engineer, maker"),
+    ("Role", "data engineer, maker"),
     ("Based", "Belém, Brazilian Amazon"),
     ("Exp", "iFood, Nuvemshop"),
     ("Data", "SQL, Python, Databricks, Airflow"),

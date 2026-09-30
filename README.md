@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/header.svg?v=c2ce29ec" width="100%" alt="Lavínia Alencar. Technology, design, creation, coffee. Analytics engineer; code, electronics, 3D printing." />
+  <img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/header.svg?v=49279ff0" width="100%" alt="Lavínia Alencar. Technology, design, creation, coffee. Data engineer; code, electronics, 3D printing." />
 </p>
 
 <p align="center">
-  Analytics engineer and maker. I build data products end to end: modeling, ETL, analytics products.<br/>
+  Data engineer and maker. I build data products end to end: modeling, ETL, analytics products.<br/>
   Outside data, I create things with code, electronics, 3D printing and design.
 </p>
 
@@ -16,7 +16,7 @@
 <br/>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/card.svg?v=f81641d7" width="100%" alt="whoami: analytics engineer and maker from Belém; data with SQL, Python, Databricks, Airflow. Setup: macOS and Linux, MacBook Air M4, Ryzen desktop, ZimaOS home server with Docker, Bambu Lab P2S." />
+  <img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/card.svg?v=d6aa6497" width="100%" alt="whoami: data engineer and maker from Belém; data with SQL, Python, Databricks, Airflow. Setup: macOS and Linux, MacBook Air M4, Ryzen desktop, ZimaOS home server with Docker, Bambu Lab P2S." />
 </p>
 
 ### Stack
