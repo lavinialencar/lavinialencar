@@ -10,6 +10,7 @@
 <p align="center">
   <a href="https://lavinialencar.com.br/en/"><img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/btn-site.svg?v=3df36240" height="40" alt="Get to know me" /></a>
   <a href="https://lavinialencar.com.br/en/freela/"><img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/btn-portfolio.svg?v=1ac4d2d8" height="40" alt="Data portfolio" /></a>
+  <a href="https://lavinialencar.com.br/en/lab/"><img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/btn-lab.svg?v=f901b733" height="40" alt="Lab" /></a>
   <a href="https://www.linkedin.com/in/lavinialencar/"><img src="https://raw.githubusercontent.com/lavinialencar/lavinialencar/main/assets/btn-linkedin.svg?v=d4a9aa63" height="40" alt="LinkedIn" /></a>
 </p>
 
