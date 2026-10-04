@@ -74,19 +74,6 @@ A personal finance pipeline you run on your own machine: it reads statements and
 
 </details>
 
-<details>
-<summary><b>cafuacu-landing</b> · website of Cafuaçu, a specialty coffee newsletter</summary>
-<br/>
-
-The landing page of Cafuaçu, a newsletter about specialty coffee in Brazil. Static, fast, deployed on every push to main.
-
-| | |
-|---|---|
-| **Stack** | Astro, Cloudflare Pages |
-| **Repo** | [lavinialencar/cafuacu-landing](https://github.com/lavinialencar/cafuacu-landing) |
-
-</details>
-
 ### Right now
 
 ```yaml
