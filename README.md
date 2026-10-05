@@ -71,6 +71,7 @@ A personal finance pipeline you run on your own machine: it reads statements and
 |---|---|
 | **Stack** | Python (stdlib only), Postgres, Docker, n8n, ntfy |
 | **Repo** | [lavinialencar/ember-template](https://github.com/lavinialencar/ember-template) |
+| **Demo** | [lavinialencar.com.br/en/lab/ember](https://lavinialencar.com.br/en/lab/ember/) |
 
 </details>
 
