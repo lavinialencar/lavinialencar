@@ -45,6 +45,7 @@ A workflow for any printer, with a tested Bambu Lab track: a monitor that sends 
 |---|---|
 | **Stack** | Python, Make, OrcaSlicer, Bambu Lab P2S |
 | **Repo** | [lavinialencar/3d-print-workflow](https://github.com/lavinialencar/3d-print-workflow) |
+| **Demo** | [lavinialencar.com.br/en/lab/3d-print](https://lavinialencar.com.br/en/lab/3d-print/) |
 
 </details>
 
