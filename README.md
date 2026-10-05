@@ -59,6 +59,7 @@ A coffee scale that builds the recipe from the taste you want and guides the bre
 |---|---|
 | **Stack** | ESP32-S3, HX711, 2.8" IPS, Fusion, PETG |
 | **Repo** | [lavinialencar/smart-coffee-scale](https://github.com/lavinialencar/smart-coffee-scale) |
+| **Demo** | [lavinialencar.com.br/en/lab/smart-coffee-scale](https://lavinialencar.com.br/en/lab/smart-coffee-scale/) |
 
 </details>
 
